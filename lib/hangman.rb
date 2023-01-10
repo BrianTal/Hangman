@@ -24,13 +24,21 @@ class Hangman
   end
 
   def play_game
-    display_game_info
-    current_guess = get_guess
-    check_guess(current_guess)
-    self.win?
+    until @game_over || @guesses_remaining < 1 do
+      display_game_info
+      current_guess = get_guess
+      check_guess(current_guess)
+      @game_over = self.win?
+    end
+    if self.win?
+      puts "Congratulations you solved the word: #{@word.capitalize}!!"
+    else
+      puts "Sorry you ran out of guesses! Game Over!"
+    end
   end
   
   def display_game_info
+    puts "============================="
     puts @word
     puts @solution_display.join(" ")
     puts "You have #{@guesses_remaining} guesses remaining"
@@ -39,16 +47,15 @@ class Hangman
   end
 
   def get_guess
-    puts "Enter your next letter:"
+    print "Enter your next letter: "
     guess = gets.chomp.downcase
     until guess.length == 1 && (guess.ord > 96 && guess.ord < 123) && !(@guesses.include?(guess))
       if @guesses.include?(guess)
-        puts "You've already entered that guess."
+        puts "You've already entered that guess!"
       end
-      puts "Please enter a valid single letter a through z that was not guessed before:"
+      print "Please enter a valid single letter a through z that was not guessed before: "
       guess = gets.chomp.downcase
     end
-    @guesses_remaining -= 1
     @guesses.push(guess)
     return guess
   end
@@ -61,14 +68,14 @@ class Hangman
           @solution_display[index] = ch
         end
       end
-      puts @solution_display.join(" ")
     else
       puts "Sorry the word does not contain that letter!"
+      @guesses_remaining -= 1
     end
   end
 
   def win?
-    puts "did we win?"
+    @word_array == @solution_display
   end
 end
 
