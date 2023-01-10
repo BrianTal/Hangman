@@ -81,3 +81,4 @@ end
 
 game = Hangman.new
 game.play_game
+p game
