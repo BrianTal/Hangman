@@ -1,0 +1,35 @@
+---
+- !ruby/object:Hangman
+  word: nutritional
+  word_array:
+  - "n"
+  - u
+  - t
+  - r
+  - i
+  - t
+  - i
+  - o
+  - "n"
+  - a
+  - l
+  guesses_remaining: 5
+  solution_display:
+  - "n"
+  - _
+  - _
+  - _
+  - _
+  - _
+  - _
+  - o
+  - "n"
+  - a
+  - _
+  guesses:
+  - "n"
+  - z
+  - o
+  - a
+  - m
+  game_over: false
