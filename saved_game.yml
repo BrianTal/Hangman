@@ -1,29 +1,27 @@
 ---
 - !ruby/object:Hangman
-  word: beautiful
+  word: auctions
   word_array:
-  - b
-  - e
   - a
   - u
+  - c
   - t
   - i
-  - f
-  - u
-  - l
+  - o
+  - "n"
+  - s
   guesses_remaining: 6
   solution_display:
-  - b
-  - e
+  - a
   - _
   - _
   - _
   - _
-  - _
+  - o
   - _
   - _
   guesses:
-  - b
-  - e
+  - a
   - o
+  - m
   game_over: false

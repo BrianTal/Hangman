@@ -1,6 +1,7 @@
 require 'yaml'
 
 class Hangman
+  attr_accessor :word, :word_array, :guesses_remaining, :solution_display, :guesses
   def initialize()
     @word = get_word
     @word_array = @word.split('')
@@ -26,6 +27,11 @@ class Hangman
   end
 
   def play_game
+    puts "Enter 2 to load game or press enter for new game."
+    load_or_not = gets.chomp
+    if load_or_not == "2"
+      load_game
+    end
     until @game_over || @guesses_remaining < 1 do
       display_game_info
       current_guess = get_guess
@@ -89,21 +95,18 @@ class Hangman
     Dir.mkdir('./game_data') unless Dir.exist?('./game_data')
     print "Enter file name: "
     filename = gets.chomp
-    File.open("./game_data/#{filename}.yml", 'w') { |file| YAML.dump([] << self, file) }
+    File.open("./game_data/#{filename}.yml", 'w') { |f| YAML.dump([] << self, f) }
     puts "Thank you for playing"
   end
 
   def load_game
     game_name = get_game_name
-    puts "before"
-    game_yaml = YAML.load_file("./game_data/#{game_name}.yml")
-    puts "after"
-    p game_yaml
-    @word = game_yaml.word
-    @word_array = game_yaml.word_array
-    @guesses_remaining = game_yaml.guesses_remaining
-    @solution_display = game_yaml.solution_display
-    @guesses = game_yaml.guesses
+    yaml = YAML.load_file("./game_data/#{game_name}.yml")
+    @word = yaml[0].word
+    @word_array = yaml[0].word_array
+    @guesses_remaining = yaml[0].guesses_remaining
+    @solution_display = yaml[0].solution_display
+    @guesses = yaml[0].guesses
   end
 
   def get_game_name
@@ -124,6 +127,5 @@ class Hangman
 end
 
 game = Hangman.new
-game.load_game
 game.play_game
 p game

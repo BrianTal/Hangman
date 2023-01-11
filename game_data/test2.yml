@@ -1,0 +1,25 @@
+--- !ruby/object:Hangman
+word: outside
+word_array:
+- o
+- u
+- t
+- s
+- i
+- d
+- e
+guesses_remaining: 5
+solution_display:
+- o
+- _
+- _
+- s
+- _
+- _
+- _
+guesses:
+- o
+- s
+- a
+- m
+game_over: false
