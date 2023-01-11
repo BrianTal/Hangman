@@ -101,7 +101,7 @@ class Hangman
 
   def load_game
     game_name = get_game_name
-    yaml = YAML.load_file("./game_data/#{game_name}.yml")
+    yaml = YAML.load_file("./game_data/#{game_name}.yml", permitted_classes: [Hangman])
     @word = yaml[0].word
     @word_array = yaml[0].word_array
     @guesses_remaining = yaml[0].guesses_remaining
