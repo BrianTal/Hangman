@@ -89,12 +89,12 @@ class Hangman
       puts "Congratulations you solved the word: #{@word.capitalize}!!"
     else
       puts "Sorry you ran out of guesses! Game Over!"
+      puts "The word was #{@word}."
     end
   end
   
   def display_game_info
     puts "============================="
-    puts @word
     puts @solution_display.join(" ")
     puts "You have #{@guesses_remaining} guesses remaining"
     guess_string = @guesses.join(",")
@@ -137,4 +137,3 @@ end
 
 game = Hangman.new
 game.play_game
-p game
