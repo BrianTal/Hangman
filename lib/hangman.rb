@@ -1,24 +1,31 @@
 require 'yaml'
 
-class Hangman
-  attr_accessor :word, :word_array, :guesses_remaining, :solution_display, :guesses
-  def initialize()
-    @word = get_word
-    @word_array = @word.split('')
-    @guesses_remaining = 7
-    @solution_display = []
-    create_solution_display
-    @guesses = []
-    @game_over = false
+class WordSelector
+  attr_reader :word
+  def initialize
+    @word = generate_word
   end
 
-  def get_word
+  def generate_word
     dictionary = IO.readlines("./dictionary.txt")
     word = dictionary[rand(0..dictionary.length)].chop
     until word.length >= 5 && word.length <= 12 do
       word = dictionary[rand(0..dictionary.length)].chop
     end
     return word
+  end
+end
+
+class Hangman
+  attr_accessor :word, :word_array, :guesses_remaining, :solution_display, :guesses
+  def initialize()
+    @word = WordSelector.new.word
+    @word_array = @word.split('')
+    @guesses_remaining = 7
+    @solution_display = []
+    create_solution_display
+    @guesses = []
+    @game_over = false
   end
 
   def create_solution_display
