@@ -1,0 +1,36 @@
+---
+- !ruby/object:Hangman
+  word: announcement
+  word_array:
+  - a
+  - "n"
+  - "n"
+  - o
+  - u
+  - "n"
+  - c
+  - e
+  - m
+  - e
+  - "n"
+  - t
+  guesses_remaining: 6
+  solution_display:
+  - a
+  - "n"
+  - "n"
+  - _
+  - _
+  - "n"
+  - _
+  - e
+  - _
+  - e
+  - "n"
+  - _
+  guesses:
+  - a
+  - e
+  - "n"
+  - p
+  game_over: false
