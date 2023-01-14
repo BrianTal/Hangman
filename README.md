@@ -1,4 +1,5 @@
 # Hangman
 Hangman: The Odin Project
 
-Initial hangman game functionality implemented need to add saving and loading. 
+Hangman project created alongside Odin Project curriculum. 
+https://www.theodinproject.com/lessons/ruby-hangman
